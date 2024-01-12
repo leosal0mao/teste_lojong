@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:teste_lojong/core/routes/routes.dart';
 
 class App extends StatelessWidget {
