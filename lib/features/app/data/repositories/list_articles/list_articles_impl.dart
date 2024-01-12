@@ -5,10 +5,10 @@ import 'package:teste_lojong/features/app/data/datasources/list_articles/list_ar
 import 'package:teste_lojong/features/app/domain/entities/articles_list_entity.dart';
 import 'package:teste_lojong/features/app/domain/interfaces/list_articles/list_articles_interface.dart';
 
-class ListArticlesImpl implements ListArticlesInterface {
+class ListArticlesInterfaceImpl implements ListArticlesInterface {
   final ListArticlesDatasource datasource;
 
-  ListArticlesImpl({required this.datasource});
+  ListArticlesInterfaceImpl({required this.datasource});
   @override
   Future<Either<Failure, ArticlesListEntity>> getArticles() async {
     try {
