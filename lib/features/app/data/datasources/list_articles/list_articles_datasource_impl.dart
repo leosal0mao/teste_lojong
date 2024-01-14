@@ -12,7 +12,7 @@ class ListArticlesDatasourceImpl implements ListArticlesDatasource {
   @override
   Future<ArticlesListModel> getArticles() async {
     final response = await serverAdapter
-        .get(queries: {}, url: '${Endpoints.baseUrl}/articles2');
+        .get(queries: {}, url: '${Endpoints.baseUrl}articles2');
     return ArticlesListModel.fromJson(jsonDecode(response.data));
   }
 }
