@@ -11,9 +11,9 @@ class GetVideosInterfaceImpl implements GetVideosInterface {
   GetVideosInterfaceImpl({required this.datasource});
 
   @override
-  Future<Either<Failure, ListVideosEntity>> getVideos() async {
+  Future<Either<Failure, ListVideosEntity>> getVideos({int? page}) async {
     try {
-      final response = await datasource.getVideos();
+      final response = await datasource.getVideos(page: page);
       return Right(response);
     } catch (e) {
       return Left(ServerFailure());

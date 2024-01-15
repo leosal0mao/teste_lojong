@@ -1,4 +1,5 @@
 import 'package:teste_lojong/core/network/errors/exception.dart';
+import 'package:teste_lojong/core/network/helpers/constants.dart';
 import 'package:teste_lojong/core/network/response_data.dart';
 import 'package:teste_lojong/core/network/server_adapter.dart';
 import 'package:dio/dio.dart';
@@ -12,6 +13,9 @@ class ServerAdapterImpl implements ServerAdapter {
   Future<ResponseData> get(
       {required Map<String, dynamic>? queries, required String url}) async {
     try {
+      const token = Constants.bearerToken;
+      dio.options.headers['Authorization'] = 'Bearer $token';
+
       final response = await dio.get(url, queryParameters: queries);
 
       return ResponseData(

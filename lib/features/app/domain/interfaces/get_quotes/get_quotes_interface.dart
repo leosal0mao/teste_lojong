@@ -4,5 +4,5 @@ import 'package:teste_lojong/features/app/domain/entities/list_quotes_entity.dar
 import '../../../../../core/network/errors/failure.dart';
 
 abstract interface class GetQuotesInterface {
-  Future<Either<Failure, ListQuotesEntity>> getQuotes();
+  Future<Either<Failure, ListQuotesEntity>> getQuotes({int? page});
 }

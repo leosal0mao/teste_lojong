@@ -10,9 +10,12 @@ class ListArticlesDatasourceImpl implements ListArticlesDatasource {
 
   ListArticlesDatasourceImpl({required this.serverAdapter});
   @override
-  Future<ArticlesListModel> getArticles() async {
-    final response = await serverAdapter
-        .get(queries: {}, url: '${Endpoints.baseUrl}articles2');
+  Future<ArticlesListModel> getArticles({int? page}) async {
+    final queries = <String, dynamic>{
+      if (page != null) 'page': page,
+    };
+    final response = await serverAdapter.get(
+        queries: queries, url: '${Endpoints.baseUrl}articles2');
     return ArticlesListModel.fromJson(jsonDecode(response.data));
   }
 }

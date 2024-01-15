@@ -11,9 +11,14 @@ class GetQuotesDatasourceImpl implements GetQuotesDatasource {
 
   GetQuotesDatasourceImpl({required this.serverAdapter});
   @override
-  Future<ListQuoteModel> getQuotes() async {
-    final response = await serverAdapter
-        .get(queries: {}, url: '${Endpoints.baseUrl}quotes2');
+  Future<ListQuoteModel> getQuotes({int? page}) async {
+    final queries = <String, dynamic>{
+      if (page != null) 'page': page,
+    };
+    final response = await serverAdapter.get(
+      queries: queries,
+      url: '${Endpoints.baseUrl}quotes2',
+    );
     return ListQuoteModel.fromJson(jsonDecode(response.data));
   }
 }

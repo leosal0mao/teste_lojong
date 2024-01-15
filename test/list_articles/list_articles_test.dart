@@ -44,7 +44,7 @@ void main() {
           .thenAnswer((_) async => Right(articlesListModel));
 
       // Act
-      final result = await usecase(const ParamsGetArticlesListUsecase());
+      final result = await usecase(const ParamsGetArticlesListUsecase(page: 1));
 
       // Assert
       verify(mockListArticlesInterface.getArticles()).called(1);
@@ -58,7 +58,7 @@ void main() {
           .thenAnswer((_) async => Left(ServerFailure()));
 
       // Act
-      final result = await usecase(const ParamsGetArticlesListUsecase());
+      final result = await usecase(const ParamsGetArticlesListUsecase(page: 1));
 
       // Assert
       verify(mockListArticlesInterface.getArticles()).called(1);

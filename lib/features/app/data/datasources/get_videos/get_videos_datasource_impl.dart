@@ -10,9 +10,13 @@ class GetVideosDatasourceImpl implements GetVideosDatasource {
 
   GetVideosDatasourceImpl({required this.serverAdapter});
   @override
-  Future<ListVideosModel> getVideos() async {
-    final response =
-        await serverAdapter.get(queries: {}, url: '${Endpoints.baseUrl}videos');
+  Future<ListVideosModel> getVideos({int? page}) async {
+    final queries = <String, dynamic>{
+      if (page != null) 'page': page,
+    };
+
+    final response = await serverAdapter.get(
+        queries: queries, url: '${Endpoints.baseUrl}videos');
     return ListVideosModel.fromJson(jsonDecode(response.data));
   }
 }

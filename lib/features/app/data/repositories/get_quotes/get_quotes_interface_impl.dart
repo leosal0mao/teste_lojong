@@ -12,9 +12,9 @@ class GetQuotesInterfaceImpl implements GetQuotesInterface {
   GetQuotesInterfaceImpl({required this.datasource});
 
   @override
-  Future<Either<Failure, ListQuotesEntity>> getQuotes() async {
+  Future<Either<Failure, ListQuotesEntity>> getQuotes({int? page}) async {
     try {
-      final response = await datasource.getQuotes();
+      final response = await datasource.getQuotes(page: page);
       return Right(response);
     } catch (e) {
       return Left(ServerFailure());

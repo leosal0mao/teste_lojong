@@ -10,9 +10,9 @@ class ListArticlesInterfaceImpl implements ListArticlesInterface {
 
   ListArticlesInterfaceImpl({required this.datasource});
   @override
-  Future<Either<Failure, ArticlesListEntity>> getArticles() async {
+  Future<Either<Failure, ArticlesListEntity>> getArticles({int? page}) async {
     try {
-      final response = await datasource.getArticles();
+      final response = await datasource.getArticles(page: page);
       return Right(response);
     } catch (e) {
       return Left(ServerFailure());

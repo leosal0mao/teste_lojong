@@ -5,7 +5,8 @@ import 'package:teste_lojong/features/app/domain/entities/articles_list_entity.d
 import 'package:teste_lojong/features/app/domain/interfaces/list_articles/list_articles_interface.dart';
 
 class ParamsGetArticlesListUsecase {
-  const ParamsGetArticlesListUsecase();
+  final int? page;
+  const ParamsGetArticlesListUsecase({this.page});
 }
 
 class GetArticlesListResult {

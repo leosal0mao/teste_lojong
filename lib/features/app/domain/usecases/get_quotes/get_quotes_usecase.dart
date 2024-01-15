@@ -5,7 +5,8 @@ import 'package:teste_lojong/features/app/domain/entities/list_quotes_entity.dar
 import 'package:teste_lojong/features/app/domain/interfaces/get_quotes/get_quotes_interface.dart';
 
 class ParamsGetQuotesUsecase {
-  const ParamsGetQuotesUsecase();
+  final int? page;
+  const ParamsGetQuotesUsecase({this.page});
 }
 
 class GetQuotesResult {
@@ -22,7 +23,7 @@ class GetQuotesUsecase
   @override
   Future<Either<Failure, GetQuotesResult>> call(
       ParamsGetQuotesUsecase params) async {
-    final response = await repository.getQuotes();
+    final response = await repository.getQuotes(page: params.page);
 
     return response.fold((failure) => Left(failure),
         (right) => Right(GetQuotesResult(response: right)));

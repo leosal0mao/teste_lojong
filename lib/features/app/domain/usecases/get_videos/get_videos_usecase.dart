@@ -6,7 +6,8 @@ import 'package:teste_lojong/features/app/domain/entities/list_videos_entity.dar
 import '../../interfaces/get_videos/get_videos_interface.dart';
 
 class ParamsGetVideosUsecase {
-  const ParamsGetVideosUsecase();
+  final int? page;
+  const ParamsGetVideosUsecase({this.page});
 }
 
 class GetVideosResult {
@@ -23,7 +24,7 @@ class GetVideosUsecase
   @override
   Future<Either<Failure, GetVideosResult>> call(
       ParamsGetVideosUsecase params) async {
-    final response = await repository.getVideos();
+    final response = await repository.getVideos(page: params.page);
 
     return response.fold((failure) => Left(failure),
         (right) => Right(GetVideosResult(response: right)));

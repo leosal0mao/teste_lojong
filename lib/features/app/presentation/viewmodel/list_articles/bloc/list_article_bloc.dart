@@ -14,11 +14,11 @@ class ListArticleBloc extends Bloc<ListArticleEvent, ListArticleState> {
   }
 
   Future<ListArticleState> getListArticles({
-    required ListArticleEvent event,
+    required GetListArticleEvent event,
     required Emitter<ListArticleState> emit,
   }) async {
-    final result =
-        await getArticleListUsecase(const ParamsGetArticlesListUsecase());
+    final result = await getArticleListUsecase(
+        ParamsGetArticlesListUsecase(page: event.page));
 
     return result.fold((l) {
       emit(ListArticleFailure(message: l.toString()));
