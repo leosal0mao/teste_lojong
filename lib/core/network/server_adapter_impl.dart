@@ -11,7 +11,9 @@ class ServerAdapterImpl implements ServerAdapter {
 
   @override
   Future<ResponseData> get(
-      {required Map<String, dynamic>? queries, required String url}) async {
+      {required Map<String, dynamic>? queries,
+      required String url,
+      RequestOptions? options}) async {
     try {
       const token = Constants.bearerToken;
       dio.options.headers['Authorization'] = 'Bearer $token';

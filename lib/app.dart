@@ -11,6 +11,5 @@ class App extends StatelessWidget {
       title: 'Lojong',
       routes: routes,
     );
-    ;
   }
 }
