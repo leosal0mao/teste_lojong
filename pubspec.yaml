@@ -35,6 +35,13 @@ dev_dependencies:
 
 
 flutter:
-
+  fonts:
+    - family: Asap
+      fonts:
+        - asset: assets/fonts/Asap-Regular.ttf
+        - asset: assets/fonts/Asap-SemiBold.ttf
+          weight: 500
+        - asset: assets/fonts/Asap-Bold.ttf
+          weight: 700
   uses-material-design: true
 

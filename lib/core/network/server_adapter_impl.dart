@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:teste_lojong/core/network/errors/exception.dart';
 import 'package:teste_lojong/core/network/helpers/constants.dart';
 import 'package:teste_lojong/core/network/response_data.dart';
@@ -16,6 +17,7 @@ class ServerAdapterImpl implements ServerAdapter {
       RequestOptions? options}) async {
     try {
       const token = Constants.bearerToken;
+      dio.interceptors.add(ChuckerDioInterceptor());
       dio.options.headers['Authorization'] = 'Bearer $token';
 
       final response = await dio.get(url, queryParameters: queries);
