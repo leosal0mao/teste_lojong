@@ -16,6 +16,8 @@ class GetArticleContentDatasourceImpl implements GetArticleContentDatasource {
         queries: {},
         url: '${Endpoints.baseUrl}article-content?articleid=$articleId');
 
-    return ArticleContentModel.fromJson(jsonDecode(response.data));
+    final jsonResponse = jsonEncode(response.data);
+
+    return ArticleContentModel.fromJson(jsonDecode(jsonResponse));
   }
 }

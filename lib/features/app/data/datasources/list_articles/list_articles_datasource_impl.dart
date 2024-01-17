@@ -16,6 +16,9 @@ class ListArticlesDatasourceImpl implements ListArticlesDatasource {
     };
     final response = await serverAdapter.get(
         queries: queries, url: '${Endpoints.baseUrl}articles2');
-    return ArticlesListModel.fromJson(jsonDecode(response.data));
+
+    final jsonResponse = jsonEncode(response.data);
+
+    return ArticlesListModel.fromJson(jsonDecode(jsonResponse));
   }
 }

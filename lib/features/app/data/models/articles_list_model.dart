@@ -9,7 +9,7 @@ class ArticlesListModel extends ArticlesListEntity {
     required super.list,
   });
 
-  factory ArticlesListModel.fromJson(Map<String, dynamic> json) =>
+  factory ArticlesListModel.fromJson(Map<dynamic, dynamic> json) =>
       ArticlesListModel(
         hasMore: json["has_more"],
         currentPage: json["current_page"],

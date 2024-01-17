@@ -9,8 +9,11 @@ part 'list_article_state.dart';
 class ListArticleBloc extends Bloc<ListArticleEvent, ListArticleState> {
   final GetArticleListUsecase getArticleListUsecase;
 
-  ListArticleBloc(this.getArticleListUsecase) : super(ListArticleInitial()) {
-    on<ListArticleEvent>((event, emit) {});
+  ListArticleBloc({required this.getArticleListUsecase})
+      : super(ListArticleInitial()) {
+    on<GetListArticleEvent>((event, emit) async {
+      emit(await getListArticles(event: event, emit: emit));
+    });
   }
 
   Future<ListArticleState> getListArticles({

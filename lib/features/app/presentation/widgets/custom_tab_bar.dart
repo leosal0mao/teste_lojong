@@ -15,7 +15,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 10),
+      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 15),
       child: Container(
         height: size.height / 20,
         decoration: BoxDecoration(
@@ -37,10 +37,11 @@ class _CustomTabBarState extends State<CustomTabBar> {
           unselectedLabelColor: Colors.white,
           padding: const EdgeInsets.all(3),
           controller: widget.tabController,
+          labelStyle: const TextStyle(fontWeight: FontWeight.w700),
           tabs: const [
-            Tab(text: 'VÍDEOS'),
-            Tab(text: 'ARTIGOS'),
-            Tab(text: 'CITAÇÕES'),
+            Tab(text: 'Vídeos'),
+            Tab(text: 'Artigos'),
+            Tab(text: 'Citações'),
           ],
         ),
       ),

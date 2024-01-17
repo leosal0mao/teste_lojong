@@ -18,9 +18,10 @@ class ServerAdapterImpl implements ServerAdapter {
     try {
       const token = Constants.bearerToken;
       dio.interceptors.add(ChuckerDioInterceptor());
-      dio.options.headers['Authorization'] = 'Bearer $token';
 
-      final response = await dio.get(url, queryParameters: queries);
+      final response = await dio.get(url,
+          queryParameters: queries,
+          options: Options(headers: {"Authorization": "Bearer $token"}));
 
       return ResponseData(
           statusCode: response.statusCode.toString(), data: response.data);

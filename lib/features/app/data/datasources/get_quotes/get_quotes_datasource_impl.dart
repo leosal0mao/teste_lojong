@@ -19,6 +19,9 @@ class GetQuotesDatasourceImpl implements GetQuotesDatasource {
       queries: queries,
       url: '${Endpoints.baseUrl}quotes2',
     );
-    return ListQuoteModel.fromJson(jsonDecode(response.data));
+
+    final jsonResponse = jsonEncode(response.data);
+
+    return ListQuoteModel.fromJson(jsonDecode(jsonResponse));
   }
 }

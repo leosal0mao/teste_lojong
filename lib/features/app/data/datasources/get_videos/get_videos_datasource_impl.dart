@@ -17,6 +17,9 @@ class GetVideosDatasourceImpl implements GetVideosDatasource {
 
     final response = await serverAdapter.get(
         queries: queries, url: '${Endpoints.baseUrl}videos');
-    return ListVideosModel.fromJson(jsonDecode(response.data));
+
+    final jsonResponse = jsonEncode(response.data);
+
+    return ListVideosModel.fromJson(jsonDecode(jsonResponse));
   }
 }

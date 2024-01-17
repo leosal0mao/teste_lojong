@@ -12,7 +12,7 @@ class ListArticlesInterfaceImpl implements ListArticlesInterface {
   @override
   Future<Either<Failure, ArticlesListEntity>> getArticles({int? page}) async {
     try {
-      final response = await datasource.getArticles(page: page);
+      final response = await datasource.getArticles(page: page ?? 1);
       return Right(response);
     } catch (e) {
       return Left(ServerFailure());

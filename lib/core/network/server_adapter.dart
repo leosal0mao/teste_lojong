@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-
-import 'response_data.dart';
+import 'package:teste_lojong/core/network/response_data.dart';
 
 abstract class ServerAdapter {
   Future<ResponseData> get({
