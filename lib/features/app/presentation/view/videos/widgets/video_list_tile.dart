@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:teste_lojong/core/constants/colors.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_button.dart';
-import 'package:teste_lojong/features/app/presentation/widgets/video_player_widget.dart';
 
 import '../../../widgets/custom_loading.dart';
 
@@ -27,7 +26,6 @@ class VideoListTile extends StatefulWidget {
 class _VideoListTileState extends State<VideoListTile> {
   @override
   Widget build(BuildContext context) {
-    bool _showVideo = false;
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, top: 3),
       child: ListTile(

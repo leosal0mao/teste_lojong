@@ -22,7 +22,7 @@ class _VideosPageState extends State<VideosPage> {
     return CustomPageBody(
       child: BlocProvider(
         create: (context) {
-          videosBloc.add(GetVideosListEvent(page: 1));
+          videosBloc.add(const GetVideosListEvent(page: 1));
           return videosBloc;
         },
         child: BlocConsumer<GetVideosBloc, GetVideosState>(

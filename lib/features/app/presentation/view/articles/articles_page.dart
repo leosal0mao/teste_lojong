@@ -22,7 +22,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
     return CustomPageBody(
       child: BlocProvider(
         create: (context) {
-          listArticleBloc.add(GetListArticleEvent(page: 1));
+          listArticleBloc.add(const GetListArticleEvent(page: 1));
           return listArticleBloc;
         },
         child: BlocConsumer<ListArticleBloc, ListArticleState>(

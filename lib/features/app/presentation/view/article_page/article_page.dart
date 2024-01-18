@@ -12,6 +12,7 @@ import 'package:teste_lojong/features/app/presentation/widgets/custom_loading.da
 import '../../../../../core/constants/colors.dart';
 import '../../viewmodel/article_content/bloc/article_content_bloc.dart';
 
+// ignore: must_be_immutable
 class ArticlePage extends StatefulWidget {
   final int articleId;
   String? articleImg;
@@ -46,7 +47,6 @@ class _ArticlePageState extends State<ArticlePage> {
 
   @override
   Widget build(BuildContext context) {
-    final htmlData = widget.fullText;
     return Scaffold(
       backgroundColor: AppColors.mainColor,
       appBar: AppBar(

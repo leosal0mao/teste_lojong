@@ -23,7 +23,7 @@ class _QuotesPageState extends State<QuotesPage> {
     return CustomPageBody(
       child: BlocProvider(
         create: (context) {
-          quotesBloc.add(GetQuotesListEvent(page: 1));
+          quotesBloc.add(const GetQuotesListEvent(page: 1));
           return quotesBloc;
         },
         child: BlocBuilder<GetQuotesBloc, GetQuotesState>(
