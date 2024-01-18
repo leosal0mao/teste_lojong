@@ -14,13 +14,13 @@ class CustomErrorWidget extends StatelessWidget {
           Text(
             'Ops!',
             style: TextStyle(
-                color: AppColors.darkTextColor, fontWeight: FontWeight.bold),
+                color: AppColors.titleColor, fontWeight: FontWeight.bold),
           ),
           Text(
             'Não foi possivel conectar ao servidor, verifique se está conectado a internet.',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: AppColors.darkTextColor, fontWeight: FontWeight.normal),
+                color: AppColors.titleColor, fontWeight: FontWeight.normal),
           )
         ],
       ),

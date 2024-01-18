@@ -11,7 +11,7 @@ class ParamsGetVideosUsecase {
 }
 
 class GetVideosResult {
-  final ListVideosEntity response;
+  final List<ListVideosEntity> response;
 
   GetVideosResult({required this.response});
 }

@@ -2,11 +2,11 @@ class ListVideosEntity {
   int id;
   String name;
   String description;
-  String? file;
+  String file;
   String url;
   String url2;
   String awsUrl;
-  String? image;
+  String image;
   String imageUrl;
   int premium;
   int order;

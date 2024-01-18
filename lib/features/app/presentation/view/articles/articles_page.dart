@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teste_lojong/core/injection/injection_container.dart';
+import 'package:teste_lojong/features/app/presentation/view/articles/widgets/article_list_tile.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_error.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_loading.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_page_body.dart';
@@ -34,9 +35,23 @@ class _ArticlesPageState extends State<ArticlesPage> {
               return const CustomErrorWidget();
             }
             if (state is ListArticleSuccess) {
-              return const Center(
-                child: Text('deu'),
-              );
+              return ListView.builder(
+                  itemCount: state.articles.list.length,
+                  itemBuilder: (context, index) {
+                    final article = state.articles.list[index];
+                    return ArticleListTile(
+                      articleTitle: article.title,
+                      articleImg: article.imageUrl,
+                      articleText: article.text,
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/article',
+                          arguments: article.id,
+                        );
+                      },
+                    );
+                  });
             }
             return const CustomLoading();
           },

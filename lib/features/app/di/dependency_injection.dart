@@ -1,3 +1,6 @@
+import 'package:teste_lojong/features/app/presentation/viewmodel/article_content/bloc/bloc/article_content_bloc.dart';
+import 'package:teste_lojong/features/app/presentation/viewmodel/get_videos/bloc/bloc/get_videos_bloc.dart';
+
 import '../../../core/injection/injection_container.dart';
 import '../data/datasources/article_content/get_article_content_datasource.dart';
 import '../data/datasources/article_content/get_article_content_datasource_impl.dart';
@@ -46,6 +49,9 @@ Future<void> initApp() async {
 
   getIt.registerLazySingleton<GetArticleContentInterface>(
       () => GetArticleContentInterfaceImpl(datasource: getIt.get()));
+
+  getIt.registerFactory<ArticleContentBloc>(
+      () => ArticleContentBloc(getArticleContentUsecase: getIt.get()));
   //
 
   //GetQuotes injections
@@ -66,4 +72,7 @@ Future<void> initApp() async {
 
   getIt.registerLazySingleton<GetVideosInterface>(
       () => GetVideosInterfaceImpl(datasource: getIt.get()));
+
+  getIt.registerFactory<GetVideosBloc>(
+      () => GetVideosBloc(getVideosUsecase: getIt.get()));
 }

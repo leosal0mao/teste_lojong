@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:teste_lojong/core/network/helpers/endpoints.dart';
 import 'package:teste_lojong/core/network/server_adapter.dart';
 import 'package:teste_lojong/features/app/data/datasources/get_videos/get_videos_datasource.dart';
@@ -10,7 +8,7 @@ class GetVideosDatasourceImpl implements GetVideosDatasource {
 
   GetVideosDatasourceImpl({required this.serverAdapter});
   @override
-  Future<ListVideosModel> getVideos({int? page}) async {
+  Future<List<ListVideosModel>> getVideos({int? page}) async {
     final queries = <String, dynamic>{
       if (page != null) 'page': page,
     };
@@ -18,8 +16,10 @@ class GetVideosDatasourceImpl implements GetVideosDatasource {
     final response = await serverAdapter.get(
         queries: queries, url: '${Endpoints.baseUrl}videos');
 
-    final jsonResponse = jsonEncode(response.data);
+    var videoList = (response.data as List)
+        .map((video) => ListVideosModel.fromJson(video))
+        .toList();
 
-    return ListVideosModel.fromJson(jsonDecode(jsonResponse));
+    return videoList;
   }
 }
