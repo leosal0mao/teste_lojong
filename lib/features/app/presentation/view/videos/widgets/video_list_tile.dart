@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:teste_lojong/core/constants/colors.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_button.dart';
+import 'package:teste_lojong/features/app/presentation/widgets/video_player_widget.dart';
 
 import '../../../widgets/custom_loading.dart';
 
@@ -48,24 +49,28 @@ class _VideoListTileState extends State<VideoListTile> {
                 aspectRatio: 21 / 10,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
-                  child: CachedNetworkImage(
-                    imageUrl: widget.videoImg,
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    placeholder: (context, url) => const CustomLoading(),
-                    errorWidget: (context, url, error) => Center(
-                      child: Icon(
-                        Icons.error,
-                        color: AppColors.mainColor,
-                      ),
-                    ),
+                  child: VideoPlayerWidget(
+                    videoImg: widget.videoImg,
+                    videoUrl: widget.videoUrl,
                   ),
+                  // CachedNetworkImage(
+                  //   imageUrl: widget.videoImg,
+                  //   imageBuilder: (context, imageProvider) => Container(
+                  //     decoration: BoxDecoration(
+                  //       image: DecorationImage(
+                  //         image: imageProvider,
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   placeholder: (context, url) => const CustomLoading(),
+                  //   errorWidget: (context, url, error) => Center(
+                  //     child: Icon(
+                  //       Icons.error,
+                  //       color: AppColors.mainColor,
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               ),
             ),
