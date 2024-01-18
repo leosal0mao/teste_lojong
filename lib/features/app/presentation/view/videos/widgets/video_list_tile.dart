@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:teste_lojong/core/constants/colors.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_button.dart';
 
@@ -6,11 +7,13 @@ class VideoListTile extends StatelessWidget {
   final String videoTitle;
   final String videoImg;
   final String videoText;
+  final String videoUrl;
   const VideoListTile({
     super.key,
     required this.videoTitle,
     required this.videoImg,
     required this.videoText,
+    required this.videoUrl,
   });
 
   @override
@@ -51,11 +54,22 @@ class VideoListTile extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           CustomButton(
+            buttonTextColor: AppColors.titleColor,
             buttonColor: AppColors.greyBackground,
             buttonIcon: Icons.share,
             iconColor: AppColors.titleColor,
             buttonText: 'Compartilhar',
-            onTap: () {},
+            onTap: () async {
+              await Clipboard.setData(ClipboardData(text: videoUrl)).then((_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    duration: Duration(seconds: 3),
+                    content: Text('Link copiado para a área de transferência'),
+                  ),
+                );
+              });
+              // copied successfully
+            },
           ),
           const SizedBox(height: 5),
           Divider(

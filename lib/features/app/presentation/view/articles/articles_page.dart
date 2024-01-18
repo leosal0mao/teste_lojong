@@ -43,6 +43,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
                       articleTitle: article.title,
                       articleImg: article.imageUrl,
                       articleText: article.text,
+                      articleUrl: article.url,
                       onTap: () {
                         Navigator.pushNamed(
                           context,

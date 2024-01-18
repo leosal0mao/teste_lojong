@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:teste_lojong/core/constants/colors.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_button.dart';
 
@@ -7,11 +8,13 @@ class ArticleListTile extends StatelessWidget {
   final String articleImg;
   final String articleText;
   final Function() onTap;
+  final String articleUrl;
   const ArticleListTile({
     super.key,
     required this.articleTitle,
     required this.articleImg,
     required this.articleText,
+    required this.articleUrl,
     required this.onTap,
   });
 
@@ -56,11 +59,23 @@ class ArticleListTile extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           CustomButton(
+            buttonTextColor: AppColors.titleColor,
             buttonColor: AppColors.greyBackground,
             buttonIcon: Icons.share,
             iconColor: AppColors.titleColor,
             buttonText: 'Compartilhar',
-            onTap: () {},
+            onTap: () async {
+              await Clipboard.setData(ClipboardData(text: articleUrl))
+                  .then((_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    duration: Duration(seconds: 3),
+                    content: Text('Link copiado para a área de transferência'),
+                  ),
+                );
+              });
+              // copied successfully
+            },
           ),
           const SizedBox(height: 5),
           Divider(

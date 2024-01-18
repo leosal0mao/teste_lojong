@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teste_lojong/features/app/domain/entities/list_videos_entity.dart';
 
-import '../../../../../domain/usecases/get_videos/get_videos_usecase.dart';
+import '../../../../domain/usecases/get_videos/get_videos_usecase.dart';
 
 part 'get_videos_event.dart';
 part 'get_videos_state.dart';

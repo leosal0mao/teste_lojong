@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:teste_lojong/core/injection/injection_container.dart';
 import 'package:teste_lojong/features/app/presentation/view/article_page/widgets/author_card.dart';
 import 'package:teste_lojong/features/app/presentation/view/article_page/widgets/share_button.dart';
-import 'package:teste_lojong/features/app/presentation/viewmodel/article_content/bloc/bloc/article_content_bloc.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_error.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_loading.dart';
 
 import '../../../../../core/constants/colors.dart';
+import '../../viewmodel/article_content/bloc/article_content_bloc.dart';
 
 class ArticlePage extends StatefulWidget {
   final int articleId;
@@ -119,7 +120,19 @@ class _ArticlePageState extends State<ArticlePage> {
                           authorName: state.article.authorName,
                         ),
                         const SizedBox(height: 15),
-                        ShareButton(onTap: () {}),
+                        ShareButton(onTap: () async {
+                          await Clipboard.setData(
+                                  ClipboardData(text: state.article.url))
+                              .then((_) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                duration: Duration(seconds: 3),
+                                content: Text(
+                                    'Link copiado para a área de transferência'),
+                              ),
+                            );
+                          });
+                        }),
                       ],
                     ),
                   ),

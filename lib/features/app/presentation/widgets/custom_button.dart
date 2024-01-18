@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/colors.dart';
-
 class CustomButton extends StatelessWidget {
   final Function()? onTap;
   final IconData buttonIcon;
   final Color iconColor;
   final String buttonText;
   final Color buttonColor;
+  final Color buttonTextColor;
   const CustomButton({
     super.key,
     this.onTap,
@@ -15,6 +14,7 @@ class CustomButton extends StatelessWidget {
     required this.iconColor,
     required this.buttonText,
     required this.buttonColor,
+    required this.buttonTextColor,
   });
 
   @override
@@ -43,7 +43,7 @@ class CustomButton extends StatelessWidget {
                 Text(
                   buttonText,
                   style: TextStyle(
-                    color: AppColors.titleColor,
+                    color: buttonTextColor,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

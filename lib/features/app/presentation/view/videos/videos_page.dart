@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teste_lojong/core/injection/injection_container.dart';
 import 'package:teste_lojong/features/app/presentation/view/videos/widgets/video_list_tile.dart';
-import 'package:teste_lojong/features/app/presentation/viewmodel/get_videos/bloc/bloc/get_videos_bloc.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_error.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_loading.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_page_body.dart';
+
+import '../../viewmodel/get_videos/bloc/get_videos_bloc.dart';
 
 class VideosPage extends StatefulWidget {
   const VideosPage({super.key});
@@ -43,6 +44,7 @@ class _VideosPageState extends State<VideosPage> {
                       videoTitle: video.name,
                       videoImg: video.imageUrl,
                       videoText: video.description,
+                      videoUrl: video.url ?? video.url2 ?? video.awsUrl,
                     );
                   });
             }

@@ -1,6 +1,3 @@
-import 'package:teste_lojong/features/app/presentation/viewmodel/article_content/bloc/bloc/article_content_bloc.dart';
-import 'package:teste_lojong/features/app/presentation/viewmodel/get_videos/bloc/bloc/get_videos_bloc.dart';
-
 import '../../../core/injection/injection_container.dart';
 import '../data/datasources/article_content/get_article_content_datasource.dart';
 import '../data/datasources/article_content/get_article_content_datasource_impl.dart';
@@ -23,6 +20,9 @@ import '../domain/usecases/get_videos/get_videos_usecase.dart';
 import '../domain/usecases/list_articles/get_articles_list_usecase.dart';
 
 import '../data/repositories/get_quotes/get_quotes_interface_impl.dart';
+import '../presentation/viewmodel/article_content/bloc/article_content_bloc.dart';
+import '../presentation/viewmodel/get_quotes/bloc/get_quotes_bloc.dart';
+import '../presentation/viewmodel/get_videos/bloc/get_videos_bloc.dart';
 import '../presentation/viewmodel/list_articles/bloc/list_article_bloc.dart';
 
 Future<void> initApp() async {
@@ -62,6 +62,10 @@ Future<void> initApp() async {
 
   getIt.registerLazySingleton<GetQuotesInterface>(
       () => GetQuotesInterfaceImpl(datasource: getIt.get()));
+
+  getIt.registerFactory<GetQuotesBloc>(
+      () => GetQuotesBloc(getQuotesUsecase: getIt.get()));
+
   //
 
   //GetVideos injections
