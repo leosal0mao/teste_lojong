@@ -51,6 +51,7 @@ class VideoListTile extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           CustomButton(
+            buttonColor: AppColors.greyBackground,
             buttonIcon: Icons.share,
             iconColor: AppColors.titleColor,
             buttonText: 'Compartilhar',

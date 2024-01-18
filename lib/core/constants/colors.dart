@@ -8,4 +8,5 @@ class AppColors {
   static Color titleColor = const Color(0xff80848F);
   static Color quotesTextColor = const Color(0xff446DAF);
   static Color gradientColor = const Color(0xff8DC1E9).withOpacity(0.1);
+  static Color greyBackground = const Color(0xffEBEBEB);
 }

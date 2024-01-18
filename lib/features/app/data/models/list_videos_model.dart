@@ -17,16 +17,16 @@ class ListVideosModel extends ListVideosEntity {
 
   factory ListVideosModel.fromJson(Map<String, dynamic> json) =>
       ListVideosModel(
-        id: json["id"],
-        name: json["name"],
-        description: json["description"],
+        id: json["id"] ?? '',
+        name: json["name"] ?? '',
+        description: json["description"] ?? '',
         file: json["file"] ?? '',
-        url: json["url"],
-        url2: json["url2"],
-        awsUrl: json["aws_url"],
+        url: json["url"] ?? '',
+        url2: json["url2"] ?? '',
+        awsUrl: json["aws_url"] ?? '',
         image: json["image"] ?? '',
-        imageUrl: json["image_url"],
-        premium: json["premium"],
-        order: json["order"],
+        imageUrl: json["image_url"] ?? '',
+        premium: json["premium"] ?? '',
+        order: json["order"] ?? '',
       );
 }

@@ -10,10 +10,10 @@ class ListQuoteModel extends ListQuotesEntity {
   });
 
   factory ListQuoteModel.fromJson(Map<String, dynamic> json) => ListQuoteModel(
-        hasMore: json["has_more"],
-        currentPage: json["current_page"],
-        lastPage: json["last_page"],
-        nextPage: json["next_page"],
+        hasMore: json["has_more"] ?? '',
+        currentPage: json["current_page"] ?? '',
+        lastPage: json["last_page"] ?? '',
+        nextPage: json["next_page"] ?? '',
         list: List<ListQuoteElement>.from(
             json["list"].map((x) => ListQuoteElementModel.fromJson(x))),
       );
@@ -29,9 +29,9 @@ class ListQuoteElementModel extends ListQuoteElement {
 
   factory ListQuoteElementModel.fromJson(Map<String, dynamic> json) =>
       ListQuoteElementModel(
-        id: json["id"],
-        text: json["text"],
-        author: json["author"],
-        order: json["order"],
+        id: json["id"] ?? '',
+        text: json["text"] ?? '',
+        author: json["author"] ?? '',
+        order: json["order"] ?? '',
       );
 }

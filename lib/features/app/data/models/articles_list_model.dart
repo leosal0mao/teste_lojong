@@ -35,14 +35,14 @@ class ListArticleElement extends ListElementEntity {
 
   factory ListArticleElement.fromJson(Map<String, dynamic> json) =>
       ListArticleElement(
-        id: json["id"],
-        text: json["text"],
-        title: json["title"],
-        imageUrl: json["image_url"],
-        authorName: json["author_name"],
-        url: json["url"],
-        premium: json["premium"],
-        order: json["order"],
-        image: json["image"],
+        id: json["id"] ?? '',
+        text: json["text"] ?? '',
+        title: json["title"] ?? '',
+        imageUrl: json["image_url"] ?? '',
+        authorName: json["author_name"] ?? '',
+        url: json["url"] ?? '',
+        premium: json["premium"] ?? '',
+        order: json["order"] ?? '',
+        image: json["image"] ?? '',
       );
 }

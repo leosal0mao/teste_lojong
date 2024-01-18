@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:teste_lojong/core/injection/injection_container.dart';
-import 'package:teste_lojong/features/app/presentation/view/article_page/widgets/artist_card.dart';
+import 'package:teste_lojong/features/app/presentation/view/article_page/widgets/author_card.dart';
+import 'package:teste_lojong/features/app/presentation/view/article_page/widgets/share_button.dart';
 import 'package:teste_lojong/features/app/presentation/viewmodel/article_content/bloc/bloc/article_content_bloc.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_error.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_loading.dart';
@@ -68,39 +69,60 @@ class _ArticlePageState extends State<ArticlePage> {
                     topRight: Radius.circular(30),
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      elevation: 3,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: AspectRatio(
-                          aspectRatio: 21 / 10,
-                          child: Image.network(
-                            widget.articleImg!,
-                            fit: BoxFit.cover,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          elevation: 3,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: AspectRatio(
+                              aspectRatio: 21 / 10,
+                              child: Image.network(
+                                state.article.imageUrl,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        const SizedBox(height: 10),
+                        Text(
+                          state.article.title.toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: AppColors.titleColor,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Html(
+                          data: state.article.fullText,
+                          style: {
+                            'p': Style(
+                              color: AppColors.titleColor,
+                              alignment: Alignment.center,
+                              textAlign: TextAlign.justify,
+                              fontWeight: FontWeight.w500,
+                            )
+                          },
+                        ),
+                        const SizedBox(height: 15),
+                        AuthorCard(
+                          authorDescription: state.article.authorDescription,
+                          authorImg: state.article.authorImage,
+                          authorName: state.article.authorName,
+                        ),
+                        const SizedBox(height: 15),
+                        ShareButton(onTap: () {}),
+                      ],
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      widget.articleTitle!.toUpperCase(),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppColors.titleColor,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Html(data: htmlData),
-                    const SizedBox(height: 10),
-                    const ArtistCard(),
-                  ],
+                  ),
                 ),
               );
             }
