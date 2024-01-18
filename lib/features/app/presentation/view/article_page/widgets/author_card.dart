@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_lojong/core/constants/colors.dart';
+
+import '../../../widgets/custom_loading.dart';
 
 class AuthorCard extends StatelessWidget {
   final String authorImg;
@@ -32,9 +35,23 @@ class AuthorCard extends StatelessWidget {
               child: authorImg != ''
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image.network(
-                        authorImg,
-                        fit: BoxFit.cover,
+                      child: CachedNetworkImage(
+                        imageUrl: authorImg,
+                        imageBuilder: (context, imageProvider) => Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        placeholder: (context, url) => const CustomLoading(),
+                        errorWidget: (context, url, error) => Center(
+                          child: Icon(
+                            Icons.error,
+                            color: AppColors.mainColor,
+                          ),
+                        ),
                       ),
                     )
                   : Image.asset('assets/images/placeholder_user.png'),

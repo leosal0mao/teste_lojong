@@ -44,7 +44,8 @@ class _VideosPageState extends State<VideosPage> {
                       videoTitle: video.name,
                       videoImg: video.imageUrl,
                       videoText: video.description,
-                      videoUrl: video.url ?? video.url2 ?? video.awsUrl,
+                      videoUrl: video.awsUrl,
+                      // videoUrl: video.url ?? video.url2 ?? video.awsUrl,
                     );
                   });
             }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,9 +86,25 @@ class _ArticlePageState extends State<ArticlePage> {
                             borderRadius: BorderRadius.circular(20.0),
                             child: AspectRatio(
                               aspectRatio: 21 / 10,
-                              child: Image.network(
-                                state.article.imageUrl,
-                                fit: BoxFit.cover,
+                              child: CachedNetworkImage(
+                                imageUrl: state.article.imageUrl,
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: imageProvider,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                placeholder: (context, url) =>
+                                    const CustomLoading(),
+                                errorWidget: (context, url, error) => Center(
+                                  child: Icon(
+                                    Icons.error,
+                                    color: AppColors.mainColor,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
