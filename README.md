@@ -1,16 +1,28 @@
-# teste_lojong
+# Teste Lojong
 
-A new Flutter project.
 
-## Getting Started
+### Setup para inicialização do projeto:
 
-This project is a starting point for a Flutter application.
+Primeiramente, é necessário ter o [Flutter](https://docs.flutter.dev/get-started/install) instalado em sua máquina, este link contém o tutorial de como fazer a instalação em cada plataforma.
 
-A few resources to get you started if this is your first Flutter project:
+Depois, faça o download do projeto disponível no [repositório](https://github.com/leosal0mao/teste_lojong).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Com o projeto instalado em sua máquina:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+Em seu console, execute:
+
+~ % flutter pub get
+```
+
+Com esse comando, todas as dependencias de pacotes serão instaladas em seu projeto, e tudo estará configurado para que você teste a aplicação.
+
+Caso hajam dúvidas, a [documentação](https://docs.flutter.dev/get-started/test-drive?tab=terminal) do flutter ensina a configuração de emuladores para todas as plataformas, e o setup para dispositivos físicos.
+
+
+### Localização do APK debug e release
+
+```
+~ % {pastaDoProjeto}/build/app/outputs/apk/debug -> localização do app debug
+~ % {pastaDoProjeto}/build/app/outputs/apk/release -> localização do app release
+```
