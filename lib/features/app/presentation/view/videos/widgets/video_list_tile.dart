@@ -1,11 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:teste_lojong/core/constants/colors.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/custom_button.dart';
 import 'package:teste_lojong/features/app/presentation/widgets/video_player_widget.dart';
-
-import '../../../widgets/custom_loading.dart';
 
 class VideoListTile extends StatefulWidget {
   final String videoTitle;
