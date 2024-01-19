@@ -26,3 +26,16 @@ Caso hajam dúvidas, a [documentação](https://docs.flutter.dev/get-started/tes
 ~ % {pastaDoProjeto}/build/app/outputs/apk/debug -> localização do app debug
 ~ % {pastaDoProjeto}/build/app/outputs/apk/release -> localização do app release
 ```
+
+### Prints para cada dispositivo
+#### nexus one
+![](/prints/nexusone.png)
+
+#### nexus 4
+![](/prints/nexus4.png)
+
+#### nexus 6
+![](/prints/nexus6.png)
+
+#### nexus 9
+![](/prints/nexus9.png)
